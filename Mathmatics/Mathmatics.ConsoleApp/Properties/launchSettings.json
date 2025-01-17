@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Mathmatics.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "+ 2 7"
+    }
+  }
+}
