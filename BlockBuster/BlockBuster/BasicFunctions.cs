@@ -34,6 +34,28 @@ namespace BlockBuster
                     ).ToList();
             }
         }
+
+        public static List<FullMovieListGenre> GetMoviesbyGenre(String genre)
+        {
+            using (var context = new Se407BlockBusterContext())
+            {
+                return context.FullMovieListGenres.Where(g => g.GenreDescr == genre).ToList();
+            }
+        }
+
+        public static List<Movie> GetMoviesbyDirector(String last)
+        {
+            using (var context = new Se407BlockBusterContext())
+            {
+                return context.Directors.Where(l => l.LastName.Equals(last)).Join
+                    (
+                        context.Movies,
+                        t => t.DirectorId,
+                        m => m.DirectorId,
+                        (t, m) => m
+                    ).ToList();
+            }
+        }
     }
 }
 
