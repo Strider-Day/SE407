@@ -35,11 +35,18 @@ namespace BlockBuster
             }
         }
 
-        public static List<FullMovieListGenre> GetMoviesbyGenre(String genre)
+        public static List<Movie> GetMoviesbyGenre(String genre)
         {
             using (var context = new Se407BlockBusterContext())
             {
-                return context.FullMovieListGenres.Where(g => g.GenreDescr == genre).ToList();
+                return context.Genres.Where(g => g.GenreDescr.Equals(genre)).Join
+                    (
+                        context.Movies,
+                        t => t.GenreId,
+                        m => m.GenreId,
+                        (t, m) => m
+                    )
+                    .ToList();
             }
         }
 

@@ -28,7 +28,7 @@ namespace BlockBuster.Test
         [Fact]
         public void TestGetMoviesByGenre()
         {
-            List<FullMovieListGenre> testMovie = BasicFunctions.GetMoviesbyGenre("Thriller");
+            List<Movie> testMovie = BasicFunctions.GetMoviesbyGenre("Thriller");
 
             Assert.NotEmpty(testMovie);
         }
