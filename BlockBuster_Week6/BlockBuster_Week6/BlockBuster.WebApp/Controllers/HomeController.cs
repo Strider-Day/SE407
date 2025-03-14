@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using BlockBuster.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using BlockBuster;
 
 namespace BlockBuster.WebApp.Controllers
 {
@@ -45,6 +46,12 @@ namespace BlockBuster.WebApp.Controllers
         {
             ViewBag.FavCities = _favHobbies;
             return View();
+        }
+
+        public IActionResult Movies()
+        {
+            var movieList = BasicFunctions.GetAllMoviesFull();
+            return View(movieList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
